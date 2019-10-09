@@ -20,17 +20,19 @@ namespace LINQ
                 2
             };
 
-            var selectedNumbers = myARR.Where(el => ((el % 2) == 0)).OrderBy(el => el);
+            var selectedNumbers = myARR.Where(el => ((el % 2) == 0));
             foreach(int el in selectedNumbers)
             {
                 Console.WriteLine(el);
             }
             myARR.Add(5);
             myARR.Add(2);
+            selectedNumbers.Reverse();
             foreach (int el in selectedNumbers)
             {
                 Console.WriteLine(el);
             }
+            int max = selectedNumbers.Max();
         }
     }
 }
