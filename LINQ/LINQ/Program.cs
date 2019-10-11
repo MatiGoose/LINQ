@@ -6,33 +6,28 @@ namespace LINQ
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            List<int> myARR = new List<int>
+            int[] mass = { 1, 2, 3, 4, 5 };
+            MyIEnumerable<int> ml = new MyList<int>(mass);
+            var iterator = ml.Where(x => (x / 2) > 1).Select(x => x * x);  
+            
+            foreach(var el in iterator)
             {
-                1,
-                5,
-                4,
-                3,
-                6,
-                3,
-                2
-            };
-
-            var selectedNumbers = myARR.Where(el => ((el % 2) == 0));
-            foreach(int el in selectedNumbers)
-            {
-                Console.WriteLine(el);
+                Console.WriteLine(iterator);
             }
-            myARR.Add(5);
-            myARR.Add(2);
-            selectedNumbers.Reverse();
-            foreach (int el in selectedNumbers)
+            if(iterator.Any(x => (x % 2) == 0))
             {
-                Console.WriteLine(el);
+                Console.WriteLine("Any element is even");
             }
-            int max = selectedNumbers.Max();
+            var newIteratro = iterator.Select(x => x * 2);
+            if (newIteratro.All(x => (x % 2) == 0))
+            {
+                Console.WriteLine("Even elements");
+            }
+            Console.ReadLine();
         }
     }
+
 }
+
